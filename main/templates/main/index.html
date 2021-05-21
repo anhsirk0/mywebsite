@@ -1,0 +1,240 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block body %}
+<!-- Section: Home -->
+<section id="home" class="section section-home scrollspy">
+    <div class="container">
+        <div class="empty"></div>
+        <div class="row">
+            <div class="col s12 l4">
+                <div class="card-panel mycolor center zero-padding">
+                    <div class="empty"></div>
+                    <img src="{% static 'main/images/avatar.png' %}" width="100px" class="circle responsive-img">
+                    <p class="flow-text mytextcolor zero-padding zero-bottom-margin">
+                        Aman Kumar
+                    </p>
+                    <ul class="collection no-border">
+                        {% for i in info %}
+                        <li class="collection-item no-border left-align">
+                            <div class="row mytextcolor">
+                                <div class="col s1 ">
+                                    <i class="material-icons">{{ i.icon }}</i>
+                                </div>
+                                <div class="col offset-s1 s10">
+                                    <span>{{ i.detail }}</span>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col s12 l8">
+                <div class="card">
+                    <div class="card-content mycolor">
+                        <span class="card-title mytextcolor">
+                            Hi there !
+                        </span>
+                        {% for line in about %}
+                        <h6 class="mysecondarytextcolor">
+                            {{ line|safe }}
+                        </h6>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l8">
+                <div class="card">
+                    <div class="card-content mycolor">
+                        <span class="card-title mytextcolor">
+                            Things I enjoy
+                        </span>
+                        {% for line in likes %}
+                        <h6 class="mysecondarytextcolor">
+                            {{ line|safe }}
+                        </h6>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section: Skills -->
+<section id="skills" class="section section-skills scrollspy ">
+    <div class="container">
+        <h2 class="center mytextcolor">Skills</h2>
+        <!-- <h6 class="center mytextcolor">Scripting is where i spend most of my time</h6> -->
+        <div class="row">
+            {% for skill in skills %}
+            <div class="col s4 m3 l2">
+                <div class="card">
+                    <div class="card-image mycolor">
+                        <img src="/static/main/images/{{ skill.pic }}" class="rounded">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Section: Tools -->
+<section id="tools" class="section section-tools scrollspy ">
+    <div class="container">
+        <h2 class="center mytextcolor">Tools</h2>
+        <div class="row">
+            {% for tool in tools %}
+            <div class="col s4 l2">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/static/main/images/{{ tool.pic }}" class="rounded">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Section: Projects -->
+<section id="projects" class="section-projects scrollspy">
+    <div class="container">
+        <h2 class="center mytextcolor">Projects</h2>
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs mycolor">
+                    {% for projects in all_projects %}
+                    <li class="tab col s3 mycolor">
+                        <a href="#projects{{ forloop.counter }}">{{ projects.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% for projects in all_projects %}
+            <div id="projects{{ forloop.counter }}" class="col s12">
+                <div class="empty"></div>
+                <div class="row">
+                    {% for project in projects.list %}
+                    <div class="col s6 m4 l3">
+                        <div class="card">
+                            <div class="card-image pointer">
+                                <img src="/static/main/images/{{ project.pic }}" class="activator">
+                                {% if project.video %}
+                                <a class="btn-floating halfway-fab waves-effect {{ project.playcolor }} waves-light modal-trigger" href="#{{ project.modal }}">
+                                    <i class="material-icons ">play_arrow</i>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="card-content {{ project.color }}">
+                                <div class="row zero-bottom-margin">
+                                    <div class="col s10">
+                                        <p class="mytextcolor">{{ project.description }}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="empty-small"></div>
+                                        <span class="activator pointer mytextcolor">
+                                            <i class="material-icons">more_vert</i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-reveal {{ project.color }}">
+                                <span class="card-title white-text text-darken-1">{{ project.title }}
+                                    <i class="material-icons right">close</i>
+                                </span>
+                                {% for line in project.more %}
+                                <p class="more mytextcolor">{{ line }} </p>
+                                {% endfor %}
+                                <div class="empty-tiny"></div>
+                                <a href="{{ project.github }}" class="white-text" target="blank">
+                                    View on Github
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if project.modal %}
+                    <!-- Modal Structure -->
+                    <div id="{{ project.modal }}" class="modal">
+                        <div class="video-container">
+                            <iframe src="{{ project.video }}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Section: Award -->
+<section id="award" class="section center scrollspy">
+    <div class="container">
+        <h2 class="center mytextcolor">Awards</h2>
+        <div class="row">
+            {% for award in awards %}
+            <div class="col s12 m6">
+                <ul class="collapsible no-border mytextcolor popout">
+                    {% for a in award %}
+                    {% if forloop.counter == 1 %}
+                    <li class="active">
+                        {% else %}
+                    <li>
+                        {% endif %}
+                        <div class="collapsible-header mycolor myborder left-align">
+                            <i class="material-icons">class</i>{{a.name}} {{ a.about }}
+                        </div>
+                        <div class="collapsible-body myborder left-align">
+                            {% for line in a.content %}
+                            <h6 class="mysecondarytextcolor">{{ line|safe }}</h6>
+                            {% endfor %}
+                            <div class="empty-small"></div>
+                            <a href="{{ a.link }}" target="blank">
+                                <button class="btn waves-effect waves-light mycolor mytextcolor">
+                                    View Certificate
+                                </button>
+                            </a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Section: Follow -->
+<footer class="page-footer mycolor">
+    <div class="container center">
+        <div class="empty"></div>
+        <div class="row">
+            <div class="col s12">
+                {% for site in social %}
+                <a href="{{ site.link }}" target="blank" class="mytextcolor" style="padding-right: 20px;">
+                    <i class="fab fa-{{ site.name }} fa-3x"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="divider blue-grey lighten-2"></div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container center">
+            <div class="row">
+                <h6 class="mytextcolor">
+                    Made with <span class="heart">♡</span> by Krishna
+                </h6>
+                <h6>
+                    <a class="mytextcolor btn mydarkcolor" href="#!">view source code</a>
+                </h6>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

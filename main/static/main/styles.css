@@ -1,0 +1,102 @@
+:root {
+    --primary: #272E48;
+    --secondary: #1d1d1d;
+    --bg: #1A233A;
+    --primary-text: #BDD1F8;
+    --secondary-text: #82A0BE;
+    --shadow:rgba(11,26,51,.63);
+}
+
+.mycolor {
+    background-color: var(--primary) !important;
+}
+
+.mydarkcolor {
+    background-color: var(--bg) !important;
+}
+
+.mytextcolor {
+    color: var(--primary-text) !important;
+}
+
+.mysecondarytextcolor {
+    color: var(--secondary-text) !important;
+}
+
+html, body {
+    height: 100% !important;
+    width: 100%;
+    background-color: var(--bg);
+}
+
+* {
+    outline: none !important;
+}
+
+.empty-tiny {
+    height: 8px;
+}
+
+.empty-small {
+    height: 15px;
+}
+
+.empty {
+    height: 30px;
+}
+
+.zero-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.more {
+    margin: 6px 0;
+}
+
+.zero-padding {
+    padding: 0 !important;
+}
+
+.card, .card-panel{
+    background-color: var(--primary) !important;
+    box-shadow: 0 2px 2px 0 var(--shadow),
+                0 3px 1px -2px var(--shadow),
+                0 1px 5px 0 var(--shadow) !important;
+}
+
+.collection-item {
+    font-size: 17px !important;
+    background-color: var(--primary) !important;
+}
+
+.no-border {
+    border: 0 !important;
+}
+
+.myborder {
+    border-bottom: 1px solid var(--bg) !important;
+}
+
+.tabs .tab a, .tabs .tab a.hover {
+    background-color: var(--primary) !important;
+    color: var(--secondary-text) !important;
+}
+
+.tabs .tab a.active {
+    color: var(--primary-text) !important;
+}
+
+.dropdown-content li>a:hover, .dropdown-content li:hover {
+    background-color: var(--bg) !important;
+}
+
+.heart {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #f06292;
+    padding: 4px;
+}
