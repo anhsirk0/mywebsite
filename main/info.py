@@ -179,7 +179,7 @@ game_projects = [
         'color': 'blue-grey darken-3',
         'github': 'https://github.com/anhsirk0/pygames/tree/master/Game_of_Life',
         'more': [
-            "Simulation of Edward Conway's game of life.",
+            "Simulation of John Conway's game of life.",
             "Made with pygame.",
         ]
     },
