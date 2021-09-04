@@ -223,7 +223,7 @@ game_projects = [
 ]
 
 tools = [
-    {'name': 'Kakoune', 'pic': 'kakoune.png'},
+    {'name': 'Emacs', 'pic': 'emacs.png'},
     {'name': 'Atom', 'pic': 'atom.png'},
     {'name': 'Git', 'pic': 'git.png'},
     {'name': 'Github', 'pic': 'github.png'},
