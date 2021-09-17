@@ -100,3 +100,12 @@ html, body {
     color: #f06292;
     padding: 4px;
 }
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-flex .col {
+    margin-left: 0 !important;
+}
